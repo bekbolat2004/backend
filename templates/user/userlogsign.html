@@ -1,0 +1,156 @@
+{% extends 'basic.html' %}
+{% block title %}login
+{% endblock title %}
+{% block body %}
+
+<style>
+    .Texts{
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+    .Center{
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        text-align: center;
+        opacity: 0.5;
+    }
+    .Last_Button{
+        color: White;
+        background-color: red;
+        padding: 2%;
+        border: white;
+        border-radius: 20px;
+        padding-left: 5%;
+        padding-right: 5%;
+        font-family: Arial, Helvetica, sans-serif;
+        transition: 0.1s;
+    }
+    .Last_Button:hover{
+        color: Red;
+        background-color: white;
+        border: solid;
+    }
+    .Text{
+        font-family: Arial, Helvetica, sans-serif;
+        opacity: 0.9;
+    }
+    .First-div{
+        border: solid;
+        border-color: rgb(223, 159, 159);
+        border-left-width: 0;
+        border-right-width: 0;
+        border-top-width: 0;
+    }
+    .Main{
+        background-image: url(https://i.pinimg.com/originals/c9/5a/9c/c95a9cddb9fbe796f14d2c512981f498.jpgx);
+    }
+    .Main img{
+        position: absolute;
+        width: 100%;
+        height: 100%; 
+        margin-top: -10%;  
+    }
+    .section{
+        margin-top: 10%;
+    }
+</style>
+<!--Cards starts here-->
+
+<div class="Main">
+    <img src="https://i.pinimg.com/originals/c9/5a/9c/c95a9cddb9fbe796f14d2c512981f498.jpg">
+    <!--login and signup tab starts here -->
+    <section class="section">
+        <div class="card w-50 mx-auto" style="background-color: rgb(228, 210, 210);">
+
+            <div class="First-div">
+                <div class="container mt-3 mx-auto">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs justify-content-center w-100 " style="width:358px">
+
+                        <li class="nav-item">
+                            <a class="nav-link active " data-toggle="tab" href="#home" style="width:158px; color: red; font-family: Arial, Helvetica, sans-serif;">Login</a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#menu1" style="width:158px; color: red; font-family: Arial, Helvetica, sans-serif;">Sign up</a>
+                        </li>
+
+                </div>
+            </div>
+
+            </ul>
+            <div class="card-body">
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div id="home" class="container tab-pane active">
+                        <p class="Center">User login form</p>
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col-md-12 col-lg-12 col-xlg-12 col-sm-12">
+
+                                    <form action="/user/login"  method="post">
+                                        {%csrf_token%}
+                                        <div class="form-group">
+                                            <label class="Texts">Username:</label>
+                                            <input type="text" class="form-control " id="email" placeholder="Enter email" name="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="Texts">Password:</label>
+                                            <input type="password" class="form-control " id="pwd" placeholder="Enter password" name="pswd">
+                                        </div>
+                                        <div class="form-group form-check">
+                                            <label class="Text">
+                                                <input class="form-check-input " type="checkbox" name="remember">
+                                                Remember me
+                                            </label>
+                                        </div>
+                                        <button type="submit" class="Last_Button">Login</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu1" class="container tab-pane fade">
+                        <p class="Center">User Signup form</p>
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col-md-12 col-lg-12 col-xlg-12 col-sm-12">
+
+                                    <form action="/user/signup" method="post">
+                                        <div class="form-group">
+                                            {%csrf_token%}
+                                            <label class="Texts">Username:</label>
+                                            <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="Texts">Password:</label>
+                                            <input type="password" class="form-control " id="password1" placeholder="Enter password" name="password1">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="Texts">Confirm Password:</label>
+                                            <input type="password" class="form-control " id="password2" placeholder="Confirm password" name="password2">
+                                        </div>
+
+                                        <button type="submit" class="Last_Button">Sign Up</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+    </section>
+    <!--Login and logout tab ends here-->
+    </div>
+
+    <!--Cards ends here-->
+{% endblock body %}

@@ -1,0 +1,61 @@
+{% extends 'basic.html' %}
+{% block title %}about
+{% endblock title %}
+{% block body %}
+<head>
+	<meta charset="UTF-8">
+	<title>About Us - Hotel Example</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
+		}
+		h1 {
+			font-size: 2em;
+			color: #333;
+			text-align: center;
+			margin-top: 50px;
+		}
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+		}
+		img {
+			width: 400px;
+			margin-right: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
+		}
+		h2 {
+			font-size: 1.5em;
+			color: #333;
+			margin-top: 0;
+		}
+		p {
+			margin-top: 0;
+			font-size: 1.2em;
+			line-height: 1.5;
+			text-align: justify;
+		}
+	</style>
+</head>
+<body>
+	<h1>About Us</h1>
+	<div class="container">
+		<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.wp.com%2Fthepointsguy.com%2Fwp-content%2Fuploads%2F2019%2F01%2FRCALMAT_00073.jpeg%3Ffit%3D2048%252C2048px%26ssl%3D1&f=1&nofb=1&ipt=d522fee2d0987f76695e7951fc1a1d861cb6c3ed6f994498db168398b47b7437&ipo=images" alt="Hotel">
+		<div>
+            <p></p>
+			<h2>Welcome to Ritz-Carlton</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus libero sed tortor lobortis interdum. Nullam vel neque sit amet nisi porttitor malesuada. Suspendisse ac est ut eros tincidunt feugiat vel vel enim. Etiam molestie faucibus velit id posuere. Fusce venenatis mauris vitae leo ullamcorper, sed semper ante consectetur. Donec sagittis magna sit amet felis laoreet eleifend.</p>
+			<p>Proin tincidunt libero vel sapien blandit, nec vestibulum neque vulputate. Ut eget fringilla elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed tincidunt volutpat est non consequat. Nunc sed metus vel odio posuere finibus sed ac augue. Vivamus gravida orci non libero bibendum, non malesuada nisi aliquet. Proin sed sagittis sapien, vel fermentum lectus. In sed nibh vitae nisl vulputate consectetur. Sed suscipit sapien felis, vel volutpat eros egestas sed. Donec lacinia orci quis mauris bibendum blandit.</p>
+		</div>
+	</div>
+{% endblock body %}

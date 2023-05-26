@@ -1,0 +1,117 @@
+{% extends 'basic.html' %}
+{% block title %}information
+{% endblock title %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1{
+            justify-content: center;
+            height: 80%;
+            width: 50%;
+            margin-top: 5%;
+            margin-left: 5%;
+        }
+        .div1 img{
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            border-radius: 20px;
+        }
+        .main{
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .div2{
+            margin-left: 10%;
+            width: 20%;
+        }
+        .div3{
+            display: flex;
+            justify-content: center;
+        }
+        .inform{
+            height: 80%;
+            margin-left: 5%;
+        }
+        .div1-inform{
+            display: flex;
+            width: 50%;
+        }
+        table, th, td {
+            border:1px solid black;
+        }
+        .inf{
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            font-weight: lighter;
+        }
+        table{
+            margin-top: 18%;
+        }
+    </style>
+</head>
+<body>
+    <div class="div3">
+        <div class="div1-inform">
+    <div class="div1">
+    <img src="{{url}}" width="300px" height="300px">
+    </div>
+    <div class="inform">
+        <table>
+            <tr>
+            <th class="main">Staff Name:</th>
+            </tr>
+            <tr>
+                <th class="inf"> {{user_p.user.username}}</th>
+            </tr>
+            <tr>
+                <th class="main">Specialty:</th>
+            </tr>
+            <tr>
+                <th class="inf">IT-developer(Senior)</th>
+            </tr>
+            <tr>
+                <th class="main">Experience:</th>
+            </tr>
+            <tr>
+                <th class="inf">3 Years Old(Project Manager)</th>
+            </tr>
+        </table>
+    </div>
+        </div>
+
+    <div class="div2">
+        <form action="{% url 'ch'%}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <h1 style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; margin-left: 5%;">Change image for {{user_p.user.username}}</h1>
+        <input type="hidden" value="{{user_p.user.username}}" name="username">
+        <img id="quizImage" src="{{url}}" style = "border-radius: 20px; margin-left: 5px;width: 80%;" class="img-fluid mx-auto mt-3 mb-3" width="300px" height="300px">
+        <input type="file" id="quizPhoto" name="quiz_photo" class="form-control" onchange="readURL(this);">
+        <button type="submit" style="background-color: red;color: white;border-radius: 10px; border: solid; border-width: 1px;border-color: black; margin-left: 5%;">Submit</button>
+                        <script>
+                            function readURL(input) {
+                                if (input.files && input.files[0]) {
+                                    var reader = new FileReader();
+
+                                    reader.onload = function(e) {
+                                        document.getElementById('quizImage').src = e.target.result;
+                                    }
+
+                                    reader.readAsDataURL(input.files[0]);
+                                }
+                            }
+                        </script>
+                        </form>
+    </div>
+    </div>
+</body>
+</html>
+{% endblock body %}

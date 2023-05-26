@@ -1,0 +1,158 @@
+{% extends 'basic.html' %}
+{% block title %}staff
+{% endblock title %}
+{% block body %}
+
+<style>
+    .Texts{
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        margin-top: 3%;
+    }
+    .Center{
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        text-align: center;
+        opacity: 0.5;
+    }
+    .Last_Button{
+        color: White;
+        background-color: red;
+        padding: 2%;
+        border: white;
+        border-radius: 20px;
+        padding-left: 5%;
+        padding-right: 5%;
+        font-family: Arial, Helvetica, sans-serif;
+        transition: 0.1s;
+        margin-top: 3%;
+    }
+    .Last_Button:hover{
+        color: Red;
+        background-color: white;
+        border: solid;
+    }
+    .Text{
+        font-family: Arial, Helvetica, sans-serif;
+        opacity: 0.9;
+    }
+    .First-div{
+        border: solid;
+        border-color: rgb(223, 159, 159);
+        border-left-width: 0;
+        border-right-width: 0;
+        border-top-width: 0;
+    }
+    .Main{
+        background-image: url(https://i.pinimg.com/originals/c9/5a/9c/c95a9cddb9fbe796f14d2c512981f498.jpgx);
+    }
+    .Main img{
+        position: absolute;
+        width: 100%;
+        height: 100%; 
+        margin-top: -10%;  
+    }
+    .section{
+        margin-top: 10%;
+    }
+</style>
+<!--Cards starts here-->
+    <div class="Main">
+        <img src="https://www.jacadatravel.com/wp-content/uploads/2016/03/ritz-carlton-osaka-exterior.jpg">
+        <!--login and signup tab starts here -->
+        <section class="section">
+            <div class="card w-50 mx-auto" style="background-color: rgb(228, 210, 210);">
+                <div class="First-div">
+                    <div class="container mt-3 mx-auto">
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs justify-content-center w-100 " style="width:358px">
+
+                            <li class="nav-item">
+                                <a class="nav-link active " data-toggle="tab" href="#home" style="width:158px; color: red; font-family: Arial, Helvetica, sans-serif;">Login</a>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#menu1" style="width:158px; color: red; font-family: Arial, Helvetica, sans-serif;">Signup</a>
+                            </li>
+
+                    </div>
+                </div>
+
+
+                </ul>
+                <div class="card-body">
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div id="home" class="container tab-pane active">
+                            <p class="Center">Staff login form</p>
+                            <div class="container">
+
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-12 col-xlg-12">
+
+                                        <form action="/staff/login" method="post">
+                                            {%csrf_token%}
+                                            <div class="Texts">
+                                                <label for="email">Username:</label>
+                                                <input type="text" class="form-control " id="username" placeholder="username" name="username">
+                                            </div>
+                                            <div class="Texts">
+                                                <label for="pwd">Password:</label>
+                                                <input type="password" class="form-control " id="password" placeholder="password" name="password">
+                                            </div>
+                                            <div class="Texts">
+                                                <label class="form-check-label">
+                                                        <input class="Text" type="checkbox"
+                                                            name="remember">
+                                                        Remember me
+                                                    </label>
+                                            </div>
+                                            <button type="submit" class="Last_Button">Login</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="menu1" class="container tab-pane fade">
+                            <p class="Center">Staff Signup form</p>
+                            <div class="container">
+
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-12 col-xlg-12">
+
+                                        <form action="/staff/signup" method="POST">
+                                            {%csrf_token%}
+                                            <div class="Texts">
+                                                <label for="username">Username:</label>
+                                                <input type="text" class="form-control " id="username" placeholder="Username" name="username">
+                                            </div>
+                                            <div class="Texts">
+                                                <label for="password1">Password:</label>
+                                                <input type="password" class="form-control " id="password1" placeholder="password" name="password1">
+                                            </div>
+                                            <div class="Texts">
+                                                <label for="password2">Confirm Password:</label>
+                                                <input type="password" class="form-control " id="password2" placeholder="Confirm Password" name="password2">
+                                            </div>
+
+
+                                            <button type="submit" class="Last_Button">Sign Up</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+        </section>
+        <!--Login and logout tab ends here-->
+    </div>
+{% endblock body %}
+    
+   

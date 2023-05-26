@@ -1,0 +1,57 @@
+{% extends 'basic.html' %}
+
+{% block title %}All Bookings{% endblock %}
+
+{% block css %}
+<style>
+
+  body {
+    background-image: url('https://images.unsplash.com/photo-1584971675698-35c67e5f9c49?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+  .container {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+{% endblock css %}
+
+
+{% block body %}
+<div class="container">
+  <h2 class="text-center text-success">All Bookings</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>User</th>
+          <th>Room</th>
+          <th>Location</th>
+          <th>Person</th>
+          <th>Check-in</th>
+          <th>Check-out</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for each_booking in bookings %}
+        <tr>
+          <td>{{ each_booking.guest.username }}</td>
+          <td>{{ each_booking.room.roomnumber }}</td>
+          <td>{{ each_booking.room.hotel.location }}</td>
+          <td>{{ each_booking.room.capacity }}</td>
+          <td>{{ each_booking.check_in }}</td>
+          <td>{{ each_booking.check_out }}</td>
+          <td>{{ each_booking.room.price }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

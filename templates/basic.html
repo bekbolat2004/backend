@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %}
+    {% endblock title %}
+    </title>
+
+    <!--Cdn links for bootstrap-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'bootstrap\bootstrap.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    {% block css %}
+    {% endblock css %}
+    <style>
+        a {
+            text-decoration: none;
+        }
+        .button{
+            background-color: white;
+            color: rgb(38, 38, 122);
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 5px;
+            transition: 0.3s;
+        }
+        .button:hover{
+            background-color: rgb(38, 38, 122);
+            color: white;
+            border-color: rgb(38, 38, 122);
+            border-color: white;
+        }
+        .a-buttons{
+            text-decoration: none;
+            color: white;
+            margin-right: 15px;
+        }
+        .a-buttons:hover{
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.771);
+        }
+        .a-first{
+            text-decoration: none;
+            color: white;
+            margin-right: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+        .a-first:hover{
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.771);
+        }
+    </style>
+</head>
+
+<body style="height: 100%;">
+    <!--Header Section starts here-->
+    <div class="container-fluid px-0" style="background-color:rgb(38, 38, 122);">
+        <nav class="navbar navbar-expand-lg navbar-dark font-weight-bold" style="background-color: rgb(38, 38, 122);">
+            <a class="a-first" href="/"><i class="fas fa-hotel text-warning"></i><b> Ritz-Carlton</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse " style="background-color:rgb(38, 38, 122);" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto " >
+                    <li class="nav-item active">
+                        <a class="a-buttons" href="/home"> Home</a>
+                    </li>
+                    {% if user.is_staff %}
+                    <li class="nav-item active">
+                        <a class="a-buttons" href="/staff/panel">Dashboard </a>
+                    </li>
+                    <li class="nav-item active">
+                        <form action="{%url 'information'%}" method="get">
+                            <input type="hidden" value="{{user.username}}" name="username">
+                            <button class="a-buttons" style="background-color: rgb(38, 38, 122); font-family: Arial, Helvetica, sans-serif; font-weight: bold;border: none;">Profile</button>
+                        </form>
+                    </li> 
+                    {% elif user.is_staff == False and user.is_authenticated %}
+                    <li class="nav-item active">
+                            <a class="a-buttons" href="/user/bookings">My Bookings </a>
+                        </li>
+                    {% endif %}
+                    {% if user.is_staff %}
+                    <li class="nav-item active">
+                            <a class="a-buttons" href="/staff/allbookings">All Bookings </a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item active">
+                        <a class="a-buttons" href="/about">About</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="a-buttons" href="/contact">Contact </a>
+                    </li>  
+                </ul>
+                {% if user.is_authenticated %}
+                      <button class="btn btn-group bg-light" data-toggle="modal" data-target="#forlogin">
+                       Hello, {{request.user}}
+                       <a href="/logout" class="nav-link">
+                    <button class="button" style="background-color: red;" data-toggle="modal" data-target="#forlogin">
+                        Log out
+                    </button></a>&nbsp; &nbsp;
+                    </button>
+                
+                {% else %}
+                   
+                    <a href="/user" class="nav-link">
+                    <button class="button" data-toggle="modal" data-target="#forlogin">
+                        User Login
+                    </button></a>
+                <a href="/staff" class="nav-link">
+                    <button class="button">
+                        Staff Login
+                    </button></a>
+                {% endif %}
+
+               
+            </div>
+        </nav>
+    </div>
+    
+    
+        {% for message in messages %}
+             <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+             </button>
+            </div>
+        {% endfor %}
+    
+    {% block body %}
+    
+    {% endblock body %}
+</body>
+{% block js %}
+{% endblock js %}
+</html>
